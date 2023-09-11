@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    background-color: rgb(0, 109, 128);
+}
+
+form {
+    width: 400px;
+    padding: 2em;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 8px 24px rgba(1, 58, 68, 0.71);
+}
+
+form h2 {
+    color: rgb(0, 109, 128);
+    font-size: 2rem;
+}
+
+form button {
+    width: 100%;
+    margin-top: .5em;
+    padding: .5em;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    letter-spacing: .4px;
+    color: white;
+    background-color: rgb(0, 109, 128);
+    border: 2px solid rgb(0, 109, 128);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 100ms;
+}
+
+form button:hover {
+    color: rgb(0, 109, 128);
+    background-color: white;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+    margin: .8em 0;
+}
+
+.field-container input {
+    padding: .75em;
+    font-family: inherit;
+    border: 2px solid rgba(102, 123, 123, 0.293);
+    border-radius: 5px;
+}
+
+.field-container input:focus-visible {
+    outline: none;
+    background-color: rgba(178, 219, 226, 0.229);
+}
+
+small {
+    color: red;
+    visibility: hidden;
+}
