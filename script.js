@@ -1,4 +1,4 @@
-const form = document.querySelector('#form')
+const form = document.getElementById('form')
 
 const nameInput = document.getElementById('name')
 const emailInput = document.getElementById('email')
@@ -10,22 +10,21 @@ const emailWarning = document.getElementById('email-warning')
 const passwordWarning = document.getElementById('password-warning')
 const password2Warning = document.getElementById('password2-warning')
 
-const button = document.querySelector('#button')
-
 // Checks validity and sets field styles accordingly
 
 const checkValidity = (input, warning, condition) => {
     if (condition) {
-        input.style.border = '2px solid red'
-        warning.style.visibility = 'visible'
-    } else {
         input.style.border = '2px solid green'
         warning.style.visibility = 'hidden'
+    } else {
+        input.style.border = '2px solid red'
+        warning.style.visibility = 'visible'
     }
 }
 
 nameInput.addEventListener('input', e => {
-    checkValidity(nameInput, nameWarning, e.target.value.trim().length < 3)
+    const condition = e.target.value.trim().length >= 3
+    checkValidity(nameInput, nameWarning, condition)
 })
 
 emailInput.addEventListener('input', () => {
@@ -33,17 +32,16 @@ emailInput.addEventListener('input', () => {
         var regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
         return regex.test(input);
     }
-    checkValidity(emailInput, emailWarning, !validateEmail(emailInput.value.trim()))
+    const condition = validateEmail(emailInput.value.trim())
+    checkValidity(emailInput, emailWarning, condition)
 })
 
 passwordInput.addEventListener('input', e => {
-    checkValidity(passwordInput, passwordWarning, e.target.value.trim().length < 6)
+    const condition = e.target.value.trim().length >= 6
+    checkValidity(passwordInput, passwordWarning, condition)
 })
 
 password2Input.addEventListener('input', e => {
-    checkValidity(password2Input, password2Warning, passwordInput.value.trim() !== password2Input.value.trim())
-})
-
-form.addEventListener('submit', e => {
-    e.preventDefault()
+    const condition = passwordInput.value.trim() === password2Input.value.trim()
+    checkValidity(password2Input, password2Warning, condition)
 })
